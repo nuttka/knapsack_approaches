@@ -23,7 +23,7 @@ int bound(Node node, int n, int weight, std::vector<Item> arr){
   return profitBound;
 }
 
-int knapsackBranchAndBound(double weight, std::vector<Item> arr, int numberOfItems){
+int branchAndBound(double weight, std::vector<Item> arr, int numberOfItems){
   std::sort(arr.begin(), arr.end(), [](Item a, Item b){
     return ((double)a.value/a.weight)>((double)b.value/b.weight);
   });
@@ -78,7 +78,7 @@ int main(int argc, char *argv[]){
   fileExtraction(fileName, items, &numberOfItems, &knapsackCapacity);
 
   auto start = std::chrono::steady_clock::now();
-  double result = knapsackBranchAndBound(knapsackCapacity, items, numberOfItems);
+  double result = branchAndBound(knapsackCapacity, items, numberOfItems);
   auto duration = std::chrono::steady_clock::now() - start;
   auto finalDuration = std::chrono::duration<double, std::milli>(duration).count();
 
