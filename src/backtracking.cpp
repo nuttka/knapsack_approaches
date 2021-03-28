@@ -1,8 +1,8 @@
 // #include <bits/stdc++.h> 
 
-#include "utils/utils.hpp"
+#include "./utils/utils.hpp"
 
-int backtracking(double weight, std::vector<Item> items, int numberOfItems, double maxProfit, int index){
+double backtracking(double weight, std::vector<Item> items, int numberOfItems, double maxProfit, int index){
   if(index == numberOfItems || weight == 0)
     return maxProfit;
 
@@ -24,7 +24,7 @@ int main(int argc, char *argv[]){
   std::vector<Item> items;
   std::string fileName = std::string(argv[1]);
   int index = 0;
-  int maxProfit = 0;
+  double maxProfit = 0;
   fileExtraction(fileName, items, &numberOfItems, &knapsackCapacity);
 
   auto start = std::chrono::steady_clock::now();
@@ -32,8 +32,8 @@ int main(int argc, char *argv[]){
   auto duration = std::chrono::steady_clock::now() - start;
   auto finalDuration = std::chrono::duration<double, std::milli>(duration).count();
 
-  std::cout << "Result is: " << result << std::endl;
-  std::cout << "Duration: " << finalDuration << " milliseconds." << std::endl;
+  // std::cout << "Result is: " << result << std::endl;
+  // std::cout << "Duration: " << finalDuration << " milliseconds." << std::endl;
 
   saveCSV(fileName, duration, result, "backtracking");
 

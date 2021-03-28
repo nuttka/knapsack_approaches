@@ -1,15 +1,15 @@
-#include <bits/stdc++.h> 
+// #include <bits/stdc++.h> 
 
 #include "utils/utils.hpp"
 
-int bound(Node node, int n, int weight, std::vector<Item> arr){
+double bound(Node node, int n, double weight, std::vector<Item> arr){
   if(node.weight >= weight)
     return 0;
 
-  int profitBound = node.profit;
+  double profitBound = node.profit;
 
   int nextItem = node.level + 1;
-  int totalWeight = node.weight;
+  double totalWeight = node.weight;
 
   while((nextItem < n) && (totalWeight + arr[nextItem].weight <= weight)){
     totalWeight += arr[nextItem].weight;
@@ -23,7 +23,7 @@ int bound(Node node, int n, int weight, std::vector<Item> arr){
   return profitBound;
 }
 
-int branchAndBound(double weight, std::vector<Item> arr, int numberOfItems){
+double branchAndBound(double weight, std::vector<Item> arr, int numberOfItems){
   std::sort(arr.begin(), arr.end(), [](Item a, Item b){
     return ((double)a.value/a.weight)>((double)b.value/b.weight);
   });
@@ -37,7 +37,7 @@ int branchAndBound(double weight, std::vector<Item> arr, int numberOfItems){
 
   tree.push(currentNode);
 
-  int maxProfit = 0;
+  double maxProfit = 0;
 
   while(!tree.empty()){
     currentNode = tree.front();
@@ -82,8 +82,8 @@ int main(int argc, char *argv[]){
   auto duration = std::chrono::steady_clock::now() - start;
   auto finalDuration = std::chrono::duration<double, std::milli>(duration).count();
 
-  std::cout << "Result is: " << result << std::endl;
-  std::cout << "Duration: " << finalDuration << " milliseconds." << std::endl;
+  // std::cout << "Result is: " << result << std::endl;
+  // std::cout << "Duration: " << finalDuration << " milliseconds." << std::endl;
 
   saveCSV(fileName, duration, result, "branchAndBound");
 
