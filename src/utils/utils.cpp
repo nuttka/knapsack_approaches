@@ -23,3 +23,14 @@ void fileExtraction(std::string fileName, std::vector<Item> &items, int *amountO
 
   file.close();
 };
+
+
+void saveCSV(std::string fileName, std::chrono::duration<double, std::milli> duration, double result){
+  std::ofstream myfile;
+  myfile.open("results.csv", std::ofstream::out | std::ofstream::app);
+  myfile << fileName << ";";
+  myfile << "Lucas Augusto Araújo Aguiar" << ";";
+  myfile << duration.count() << ";";
+  myfile << result << ";" << "\n";
+  myfile.close();
+};

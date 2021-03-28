@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include <utility>
+#include <bits/stdc++.h> 
 #include <fstream>
 
 typedef struct Node{
@@ -19,5 +20,6 @@ typedef struct Item{
 } Item;
 
 void fileExtraction(std::string, std::vector<Item>&, int*, double*);
+void saveCSV(std::string, std::chrono::duration<double, std::milli>, double);
 
 #endif
