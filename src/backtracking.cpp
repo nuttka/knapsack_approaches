@@ -3,7 +3,7 @@
 #include "utils/utils.hpp"
 
 int backtracking(double weight, std::vector<Item> items, int numberOfItems, double maxProfit, int index){
-  if(index == numberOfItems)
+  if(index == numberOfItems || weight == 0)
     return maxProfit;
 
   if(weight < items.at(index).weight)
