@@ -85,7 +85,7 @@ int main(int argc, char *argv[]){
   std::cout << "Result is: " << result << std::endl;
   std::cout << "Duration: " << finalDuration << " milliseconds." << std::endl;
 
-  saveCSV(fileName, duration, result);
+  saveCSV(fileName, duration, result, "branchAndBound");
 
   return 0;
 }

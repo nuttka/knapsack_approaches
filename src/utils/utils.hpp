@@ -20,6 +20,6 @@ typedef struct Item{
 } Item;
 
 void fileExtraction(std::string, std::vector<Item>&, int*, double*);
-void saveCSV(std::string, std::chrono::duration<double, std::milli>, double);
+void saveCSV(std::string, std::chrono::duration<double, std::milli>, double, std::string);
 
 #endif
